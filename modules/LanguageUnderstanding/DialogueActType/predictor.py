@@ -29,8 +29,12 @@ class DialogueActTypePredictor(object):
 def sent2features_(sent):
     from training_data_generator.scripts.analyzer import analyze_morph
     dic_path = os.path.join(os.path.dirname(__file__), 'dic.txt')
+    # mecabで形態素解析して表層形を取得
     surfaces, _ = analyze_morph(sent)
+    print("surfaces:", surfaces)
+    # コーパス
     dictionary = corpora.Dictionary.load_from_text(dic_path)
+    print("dictionary: ", dictionary)
     features = to_features(dictionary, surfaces)
 
     return features
@@ -83,6 +87,7 @@ if __name__ == '__main__':
     test_y = labels[train_num:]
 
     predictor = DialogueActTypePredictor()
+    # 訓練（内部でjoblib.dump()してる）
     predictor.train(train_x, train_y)
     predictor.evaluate(test_x, test_y)
 

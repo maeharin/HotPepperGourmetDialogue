@@ -3,7 +3,7 @@ bz2file==0.98
 gensim==0.12.4
 httpretty==0.8.10
 mecab-python3==0.7
-numpy==1.10.4
+numpy==1.15.1
 python-crfsuite==0.8.4
 PyYAML==3.11
 requests==2.9.1

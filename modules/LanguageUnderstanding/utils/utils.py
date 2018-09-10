@@ -146,6 +146,8 @@ def create_bow(dictionary, words):
 
 def to_features(dictionary, words):
     tmp = dictionary.doc2bow(words)
+    print("tmp:", tmp)
     dense = list(matutils.corpus2dense([tmp], num_terms=len(dictionary)).T[0])
+    #print("dense:", dense) 15000近い値の配列
 
     return dense
